@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jhxapi.shardingjbbc.mapper.UserMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="baseResultMap" type="com.jhxapi.shardingjbbc.entity.UserEntity">
+        <id column="id" property="id" />
+        <result column="user" property="user" />
+    </resultMap>
+    
+   	<select id="selectUserNameById" resultMap="baseResultMap">
+   		SELECT * FROM t_user WHERE id = #{id}
+   	</select>
+   	
+   	<select id="selectUserNameByUser" resultMap="baseResultMap">
+   		SELECT * FROM t_user WHERE user = #{user}
+   	</select>
+   	
+   	<insert id="insertUser" parameterType="com.jhxapi.shardingjbbc.entity.UserEntity">
+   		INSERT INTO t_user(user) VALUES(#{user})
+   	</insert>
+
+</mapper>

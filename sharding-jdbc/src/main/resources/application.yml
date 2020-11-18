@@ -1,0 +1,83 @@
+spring:
+  datasource:
+    druid:
+      one:
+        url: jdbc:mysql://localhost:3306/sharding_master0?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&serverTimezone=UTC
+        username: root
+        password: 123
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        name: aaa
+        initial-size: 15 # 初始化时建立物理连接的个数。初始化发生在显示调用init方法，或者第一次getConnection时
+        max-active: 15 # 最大连接池数量
+        max-wait: 60000  # 获取连接时最大等待时间，单位毫秒
+        validation-query: select 1 FROM DUAL
+        connection-properties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+        use-global-data-source-stat: true
+        filters: stat
+        stat-view-servlet:
+          enabled: true #是否开启监控页面
+      one-slave:
+        url: jdbc:mysql://localhost:3306/sharding_slave0?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&serverTimezone=UTC
+        username: root
+        password: 123
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        name: aaa
+        initial-size: 15 # 初始化时建立物理连接的个数。初始化发生在显示调用init方法，或者第一次getConnection时
+        max-active: 15 # 最大连接池数量
+        max-wait: 60000  # 获取连接时最大等待时间，单位毫秒
+        validation-query: select 1 FROM DUAL
+        connection-properties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+        use-global-data-source-stat: true
+        filters: stat
+        stat-view-servlet:
+          enabled: true #是否开启监控页面
+      two:
+        url: jdbc:mysql://localhost:3306/sharding_master1?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&serverTimezone=UTC
+        username: root
+        password: 123
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        name: bbb
+        initial-size: 15 # 初始化时建立物理连接的个数。初始化发生在显示调用init方法，或者第一次getConnection时
+        max-active: 15 # 最大连接池数量
+        max-wait: 60000  # 获取连接时最大等待时间，单位毫秒
+        validation-query: select 1 FROM DUAL
+        connection-properties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+        use-global-data-source-stat: true
+        filters: stat
+        stat-view-servlet:
+          enabled: true #是否开启监控页面
+      two-slave:
+        url: jdbc:mysql://localhost:3306/sharding_slave1?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&serverTimezone=UTC
+        username: root
+        password: 123
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        name: bbb
+        initial-size: 15 # 初始化时建立物理连接的个数。初始化发生在显示调用init方法，或者第一次getConnection时
+        max-active: 15 # 最大连接池数量
+        max-wait: 60000  # 获取连接时最大等待时间，单位毫秒
+        validation-query: select 1 FROM DUAL
+        connection-properties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+        use-global-data-source-stat: true
+        filters: stat
+        stat-view-servlet:
+          enabled: true #是否开启监控页面
+      leaf:
+        url: jdbc:mysql://localhost:3306/leaf?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&serverTimezone=UTC
+        username: root
+        password: 123
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        name: aaa
+        initial-size: 15 # 初始化时建立物理连接的个数。初始化发生在显示调用init方法，或者第一次getConnection时
+        max-active: 15 # 最大连接池数量
+        max-wait: 60000  # 获取连接时最大等待时间，单位毫秒
+        validation-query: select 1 FROM DUAL
+        connection-properties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+        use-global-data-source-stat: true
+        filters: stat
+        stat-view-servlet:
+          enabled: true #是否开启监控页面
+mybatis:  mapper-locations:  - classpath:mapper/*Mapper.xml
+  
+logging:  level:    com.jhxapi.shardingjbbc: DEBUG    
+  
+  
